@@ -4,7 +4,8 @@ title: "GitHub Blog 만들기 - 1"
 description: "A graphic designer is a professional within the graphic design and graphic arts industry."
 date: 2024-03-04
 feature_image: images/custom/GitHub-logo.png
-tags: [tips, work]
+tags: [Github Blog, tips]
+comments: true
 ---
 
 GitHub Blog 테스트 포스팅
