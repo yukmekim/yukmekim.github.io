@@ -1,9 +1,11 @@
 ---
 layout: page
-title: About this blog
+title: About Me
 description: An optional about page for Scriptor Jekyll theme
 #feature_image: images/custom/author-profile.jpg
 ---
+
+Java & Spring / Vailla JS 기반의 에듀테크 기업에서 3년차 백엔드 개발자로 **교육청 플랫폼 개발 및 서버 운영** 업무를 해왔습니다.
 
 <!-- **Janghun Yuk** is a Senior Art Director from [Vilnius](https://en.wikipedia.org/wiki/Vilnius), Lithuania. After graduating from The College of Visual Arts with a degree in Communication Design, he worked for three small graphic design shops where he honed his design style and sensibility.
 
