@@ -41,6 +41,7 @@ navigation:
 
 # The shortname for your Disqus site to enable comments.
 # disqus: yukmekim-github-io
+comments: yukmekim-github-io
 
 # Colors
 accent_color: '#2d72d9'
