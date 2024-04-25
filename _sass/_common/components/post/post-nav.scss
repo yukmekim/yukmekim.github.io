@@ -42,10 +42,6 @@
 }
 
 .post-nav-next {
-  a { padding-left: 15px; }
-}
-
-.post-nav-prev {
   text-align: right;
 
   a { padding-right: 15px; }
@@ -54,4 +50,8 @@
     right: 0;
     left: auto;
   }
+}
+
+.post-nav-prev {
+  a { padding-left: 15px; }
 }
