@@ -16,7 +16,7 @@ vlog나 티스토리 사용을 고려해봤으나 우린 개발자니까 조금 
 
 깃헙 블로그(Github blog)의 정식 명칭은 **[깃헙 페이지(Github page)](https://docs.github.com/ko/pages/quickstart)**다.
 
-개발자들이 이용하는 오픈소스 라이브러리 Github에서 제공하는 웹 호스팅 서비스로 사용자가 무료로 자유롭게 사이트를 제작하고 운영할 수 있도록 서비스를 제공해주는 것으로, 깃 블로그를 만들기 위해서는 Github 계정이 필요함으로 Github 계정이 없다면 **[Github](https://github.com/)**으로 접속하여 계정생성(회원가입)을 먼저 진행하도록 하자.
+개발자들이 이용하는 오픈소스 라이브러리 Github에서 제공하는 웹 호스팅 서비스로 사용자가 무료로 자유롭게 사이트를 제작하고 운영할 수 있도록 서비스를 제공해주는 것으로, 깃 블로그를 만들기 위해서는 Github 계정이 필요하니 Github 계정이 없다면 **[Github](https://github.com/)**으로 접속하여 계정생성(회원가입)을 먼저 진행하도록 하자.
 
 ## Github Repository 생성
 생성한 계정으로 로그인후 프로필(https://github.com/{username})에서 Repository를 생성한다.
