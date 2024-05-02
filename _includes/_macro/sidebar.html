@@ -34,7 +34,6 @@
                src="{% assign default_avatar = site.images | append: '/author-profile.png' %}{{ site.avatar | default: default_avatar | relative_url }}"
                alt="{{ site.author }}" />
           <p class="site-author-name" itemprop="name">{{ site.author }}</p>
-          <p class="site-author-name" itemprop="info">{{ site.info }}</p>
            {% if site.seo %}
               <p class="site-description motion-element" itemprop="description">{{ site.signature }}</p>
            {% else %}
