@@ -1,8 +1,8 @@
 ---
-title: Github Blog 만들기 (1)
-description: 깃헙 블로그(Github blog)의 정식 명칭은 깃헙 페이지(Github page)입니다. 개발자들이 이용하는 오픈소스 라이브러리 Github에서 제공하는 웹 호스팅 서비스로 사용자가 무료로 자유롭게 사이트를 제작하고 운영할 수 있는 서비스를 제공해주는 것 입니다.
+title: GitHub Blog 만들기 (1)
+description: 깃헙 블로그(GitHub blog)의 정식 명칭은 깃헙 페이지(GitHub page)입니다. 개발자들이 이용하는 오픈소스 라이브러리 GitHub에서 제공하는 웹 호스팅 서비스로 사용자가 무료로 자유롭게 사이트를 제작하고 운영할 수 있는 서비스를 제공해주는 것 입니다.
 categories:
- - Github Blog
+ - GitHub Blog
 tags:
 ---
 
@@ -14,18 +14,18 @@ vlog나 티스토리 사용을 고려해봤으나 우린 개발자니까 조금 
 
 ## GitHub Blog(깃허브 블로그)란?
 
-깃헙 블로그(Github blog)의 정식 명칭은 **[깃헙 페이지(Github page)](https://docs.github.com/ko/pages/quickstart)**다.
+깃헙 블로그(GitHub blog)의 정식 명칭은 **[깃헙 페이지(GitHub page)](https://docs.github.com/ko/pages/quickstart)**다.
 
-개발자들이 이용하는 오픈소스 라이브러리 Github에서 제공하는 웹 호스팅 서비스로 사용자가 무료로 자유롭게 사이트를 제작하고 운영할 수 있도록 서비스를 제공해주는 것으로, 깃 블로그를 만들기 위해서는 Github 계정이 필요하니 Github 계정이 없다면 **[Github](https://github.com/)**으로 접속하여 계정생성(회원가입)을 먼저 진행하도록 하자.
+개발자들이 이용하는 오픈소스 라이브러리 GitHub에서 제공하는 웹 호스팅 서비스로 사용자가 무료로 자유롭게 사이트를 제작하고 운영할 수 있도록 서비스를 제공해주는 것으로, 깃 블로그를 만들기 위해서는 GitHub 계정이 필요하니 GitHub 계정이 없다면 **[GitHub](https://github.com/)**으로 접속하여 계정생성(회원가입)을 먼저 진행하도록 하자.
 
 ## GitHub Repository 생성
 생성한 계정으로 로그인후 프로필(https://github.com/{username})에서 Repository를 생성한다.
 
 ![Desktop Preview](/assets/images/post/gitblog_1/git-repository.png)
 
-Repository를 생성할때 **[Github docs](https://docs.github.com/ko/pages/quickstart)**에 명시 되어 있는데로 `{username}.github.io`로 작성 해야 한다.
+Repository를 생성할때 **[Gitub docs](https://docs.github.com/ko/pages/quickstart)**에 명시 되어 있는데로 `{username}.github.io`로 작성 해야 한다.
 
- 내용을 무시하고 다른 이름으로 Repository를 만들어 봤지만 정상 동작하지 않으며 사용자 고유 식별과 Github와의 원활한 통합을 위해 Repository 이름을 `{username}.github.io`로 작성 해야 한다고 하니 고생하지 말고 문서를 따르자.. 
+ 내용을 무시하고 다른 이름으로 Repository를 만들어 봤지만 정상 동작하지 않으며 사용자 고유 식별과 GitHub와의 원활한 통합을 위해 Repository 이름을 `{username}.github.io`로 작성 해야 한다고 하니 고생하지 말고 문서를 따르자.. 
 
 ![Desktop Preview](/assets/images/post/gitblog_1/git-page-settings.png)
 
@@ -47,4 +47,4 @@ GitHub Pages로 등록된 Repository는 저장소 이벤트(예: 푸시, 풀 리
 
 Actions에 빌드가 완료되었으면 블로그 주소(`{username}.github.io`)로 접속해서 '육각형!의 블로그'가 화면에 보인다면 성공이다.
 
-다음 포스팅에서는 빈폐이지를 블로그답게 만들어줄 jekyll 테마를 적용하기전 ruby 설치에 대해 정리하도록 하겠다.
+다음 포스팅에서는 빈폐이지를 블로그답게 만들어줄 jekyll 테마를 적용하기 위해 ruby 설치에 대해 정리하도록 하겠다.
