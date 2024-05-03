@@ -65,7 +65,7 @@ gem install webrick
 bundle exec jekyll serve
 ```
 
-위에 명령어를 통해 Gemfile에 정의된 gem 환경에서 Jekyll 사이트를 로컬 서버에 빌드하고 실행하면 적용된 테마가 화면에 나와야 하는데... 뭐요 이게..?
+위에 명령어를 통해 Gemfile에 정의된 gem 환경에서 Jekyll 사이트를 로컬 서버에 빌드하고 실행후 Jekyll의 기본 설정 포트 *127.0.0.1:4000*로 접속하면 적용된 테마가 화면에 나와야 하는데... 뭐요 이게..?
 
 ```
 undefined method `untaint' for "C:/Users/{LocalPath}/jekyll-theme-next":String (NoMethodError)
