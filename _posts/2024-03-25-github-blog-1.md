@@ -23,7 +23,7 @@ vlog나 티스토리 사용을 고려해봤으나 우린 개발자니까 조금 
 
 ![Desktop Preview](/assets/images/post/gitblog_1/git-repository.png)
 
-Repository를 생성할때 **[Gitub docs](https://docs.github.com/ko/pages/quickstart)**에 명시 되어 있는데로 `{username}.github.io`로 작성 해야 한다.
+Repository를 생성할때 **[GitHub docs](https://docs.github.com/ko/pages/quickstart)**에 명시 되어 있는데로 `{username}.github.io`로 작성 해야 한다.
 
  내용을 무시하고 다른 이름으로 Repository를 만들어 봤지만 정상 동작하지 않으며 사용자 고유 식별과 GitHub와의 원활한 통합을 위해 Repository 이름을 `{username}.github.io`로 작성 해야 한다고 하니 고생하지 말고 문서를 따르자.. 
 
@@ -47,4 +47,4 @@ GitHub Pages로 등록된 Repository는 저장소 이벤트(예: 푸시, 풀 리
 
 Actions에 빌드가 완료되었으면 블로그 주소(`{username}.github.io`)로 접속해서 '육각형!의 블로그'가 화면에 보인다면 성공이다.
 
-다음 포스팅에서는 빈폐이지를 블로그답게 만들어줄 jekyll 테마를 적용하기 위해 ruby 설치에 대해 정리하도록 하겠다.
+다음 포스팅에서는 빈폐이지를 블로그답게 만들어줄 Jekyll 테마를 적용하기 위해 Ruby 설치에 대해 정리하도록 하겠다.
