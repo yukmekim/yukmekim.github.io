@@ -72,4 +72,4 @@ undefined method `untaint' for "C:/Users/{LocalPath}/jekyll-theme-next":String (
     current  = File.expand_path(SharedHelpers.pwd).untaint
 ```
 
-다음 포스팅에서는 테마 적용후 로컬 빌드시 발생한 에러에 해결에 대해 정리해야겠다..
+다음에는 테마 적용후 로컬 빌드시 발생한 에러 해결에 대해 짧게 정리후 이어서 포스팅하도록 하겠다.

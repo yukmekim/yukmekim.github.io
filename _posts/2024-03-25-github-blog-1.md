@@ -1,6 +1,6 @@
 ---
 title: GitHub Blog 만들기 (1)
-description: 깃헙 블로그(GitHub blog)의 정식 명칭은 깃헙 페이지(GitHub page)입니다. 개발자들이 이용하는 오픈소스 라이브러리 GitHub에서 제공하는 웹 호스팅 서비스로 사용자가 무료로 자유롭게 사이트를 제작하고 운영할 수 있는 서비스를 제공해주는 것 입니다.
+description: 깃헙 블로그(GitHub blog)의 정식 명칭은 깃헙 페이지(GitHub Page)로 개발자들이 이용하는 오픈소스 라이브러리 GitHub에서 제공하는 웹 호스팅 서비스로 사용자가 무료로 자유롭게 사이트를 제작하고 운영할 수 있는 서비스를 제공해주는 것이다.
 categories:
  - GitHub Blog
 tags:
