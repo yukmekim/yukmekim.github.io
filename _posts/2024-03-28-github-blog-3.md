@@ -2,9 +2,9 @@
 title: '[Ruby] `undefined method` 에러'
 description: GitHub Blog 만들기 (2)에서 로컬에서 블로그 실행 환경을 위해 Ruby와 Jekyll을 설치하고 다운로드 받은 테마를 적용후 실행했는데 `undefined method` 에러가 발생했다.Ruby 공식 문서를 확인한 결과 해당 메서드는 3.2.0 버전 이후로는 제거되었다는 사실을 알게 되었다.
 categories:
- - GitHub Blog
- - Ruby
+ - 트러블슈팅
 tags:
+ - GitHub Blog
  - Ruby
 ---
 
