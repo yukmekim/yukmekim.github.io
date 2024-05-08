@@ -8,6 +8,6 @@ tags:
  - Jenkins
 ---
 
-
+Jenkins에서 배포 파일을 aws ec2 서버로 옮겨주는 작업이 필요하다.
 
 
