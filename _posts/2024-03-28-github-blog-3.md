@@ -19,8 +19,10 @@ tags:
 `bundle update` 로 bundle을 최신 버전으로 update를 해도 같은 오류가 반복되고 있다.
 Ruby 버전을 다운그레이드 해야하나 고민하던중 GemFile에서 bundle 버전까지 관리한다는 사실이 기억났다.
 
-우리가 다운로드 받은 테마는 GemFile까지 포함하고 있었고 그걸 그대로 옮겨 붙였으니 해당 파일에서 관리되는 `1.17.1` 버전의 bundle을 사용하고 있었고 해당 버전을 update받은 bundle 버전으로 수정했다.
+우리가 다운로드 받은 테마는 GemFile까지 포함하고 있었고 그걸 그대로 옮겨 붙였으니 해당 파일에서 관리되는 `1.17.1` 버전의 bundle을 사용하고 있었고 우리가 설치한 최신 버전 루비에서는 호환되지 않았던 것이다.
 
 ![Desktop Preview](/assets/images/post/gitblog_3/theme_bundle_version.png)
+
+GemFile의 bundle 버전을 update받은 최신 버전으로 수정했다.
 
 Jekyll 서버를 재시작후 에러 없이 콘솔창에 `Server Running...` 문구가 출력되는걸 확인 할 수 있다.
