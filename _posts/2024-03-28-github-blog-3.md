@@ -25,4 +25,4 @@ Ruby 버전을 다운그레이드 해야하나 고민하던중 GemFile에서 bun
 
 GemFile의 bundle 버전을 update받은 최신 버전으로 수정했다.
 
-Jekyll 서버를 재시작후 에러 없이 콘솔창에 `Server Running...` 문구가 출력되는걸 확인 할 수 있다.
+Jekyll 서버를 재시작후 에러 없이 콘솔창에 `Server Running...` 문구가 출력되는걸 확인 할 수 있다. 
