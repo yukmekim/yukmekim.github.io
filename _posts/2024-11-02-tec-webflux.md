@@ -61,11 +61,16 @@ server:
       max: 3000
       min-spare: 1000
 
+spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://dev.portdemo.com:3307/dev_port
     username: port_user
     password: XXXX
+  jpa:
+    generate-ddl: on
+    hibernate:
+      ddl-auto: create
 
 logging:
   level:
