@@ -24,7 +24,60 @@ MVC는 전통적인 블로킹 방식으로 동작하는 웹 프레임워크다. 
 ### WebFlux: 고속 주행
 반대로 WebFlux는 비동기적이고 논블로킹 방식으로 작동하는 웹 프레임워크다. 요청이 들어오면, **스레드가 블로킹되지 않고 다른 작업을 수행**할 수 있다. 이렇게 되면 많은 요청을 **효율적**으로 처리할 수 있고, **서버의 리소스를 최대한 활용**할 수 있다. 즉, WebFlux는 **"고속 주행"**처럼 빠르게 데이터를 처리할 수 있는 장점이 있다.
 
-### 주요 차이점 정리
+### 스트레스 테스트를 통한 성능 비교
+
+**MVC**
+```java
+@RestController
+@RequestMapping("/api/v2/mvcApi")
+public class MvcAPI {
+    @GetMapping("/helloMvc")
+    public Map<String, String> helloMvc() {
+        return Map.of("status", "200");
+    }
+}
+```
+
+**WebFlux**
+```java
+@RestController
+@RequestMapping("/api/v2/webFluxApi")
+public class WebFluxAPI {
+    @GetMapping("/helloWebFlux")
+    public Mono<Map<String, String>> helloWebFlux() {
+        return Mono.just(Map.of("status", "200"));
+    }
+}
+```
+
+application.yml
+```yml
+server:
+  port: 8099
+  tomcat:
+    max-connections: 10000
+    accept-count: 1000
+    threads:
+      max: 3000
+      min-spare: 1000
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://dev.portdemo.com:3307/dev_port
+    username: port_user
+    password: XXXX
+
+logging:
+  level:
+    root: INFO
+```
+
+스레드 최소 설정 값은 1000으로 진행하였다.
+
+## 결론
+**MVC**와 **WebFlux**는 각기 다른 특징과 장점이 있다.
+
+### 차이점 정리
 
 - 처리 방식:
     - Spring MVC: 요청을 처리할 때 스레드가 블로킹됨.
@@ -35,10 +88,6 @@ MVC는 전통적인 블로킹 방식으로 동작하는 웹 프레임워크다. 
 - 사용 사례:
     - Spring MVC: 안정적인 CRUD 애플리케이션에 적합.
     - WebFlux: 실시간 데이터 처리와 대규모 트래픽을 요구하는 애플리케이션에 적합.
-
-
-### 결론
-**MVC**와 **WebFlux**는 각기 다른 특징과 장점이 있다.
 
 비유적으로 말하자면, **Spring MVC**는 안정적이고 예측할 수 있는 경로를 제공하여 간단한 CRUD 애플리케이션이나 안정적인 웹 서비스를 구축할 때 유리하지만, 트래픽이 많아지면 성능 저하가 발생할 수 있기 때문에 **"느긋한 드라이브"**라 할 수 있는 반면에, **WebFlux**는 비동기 방식으로 설계되어 있어 요청을 빠르게 처리할 수 있으며, 대규모 트래픽을 효과적으로 관리할 수 있고 실시간 데이터 처리와 같은 복잡한 애플리케이션에서 더 적합하다는 데 있어 **"고속 주행"**이라고 비유해 봤다.
 
