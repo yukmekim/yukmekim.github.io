@@ -22,18 +22,40 @@ tags:
 MVC는 전통적인 블로킹 방식으로 동작하는 웹 프레임워크다. 클라이언트의 요청이 들어오면, **해당 요청을 처리할 스레드가 할당**되고, 이 스레드는 요청이 끝날 때까지 기다리게 된다. **안정적**이고 구현이 간단하지만, 요청이 많아지면 성능 저하가 발생할 수 있다. 특히 여러 요청이 동시에 들어오면, 스레드가 차단되어 리소스 낭비 되며, **스레드 풀이 가득 차서 새로운 요청을 받지 못하는 상황(Thread Pool Hell)**이 발생할 수도 있다. 그래서 Spring MVC는 CRUD 애플리케이션 같은 안정적이고 보편적인 웹 서비스에 잘 맞는다고 한다.
 
 ### WebFlux: 고속 주행
-반대로 WebFlux는 비동기적이고 논블로킹 방식으로 작동하는 웹 프레임워크다. 요청이 들어오면, **스레드가 블로킹되지 않고 다른 작업을 수행**할 수 있다. 이렇게 되면 많은 요청을 **효율적**으로 처리할 수 있고, **서버의 리소스를 최대한 활용**할 수 있다. 즉, WebFlux는 **"고속 주행"**처럼 빠르게 데이터를 처리할 수 있는 장점이 있다.
+반대로 WebFlux는 비동기적이고 논블로킹 방식으로 작동하는 웹 프레임워크다. 요청이 들어오면, **스레드가 블로킹되지 않고 다른 작업을 수행**할 수 있다. 이를 위해 Mono와 Flux와 같은 리액티브 스트림을 사용하여 비동기적 처리를 제공한다. 이러한 특징 덕분에 많은 요청을 **효율적**으로 처리할 수 있고, **서버의 리소스를 최대한 활용**할 수 있다. 즉, WebFlux는 **"고속 주행"**처럼 빠르게 데이터를 처리할 수 있는 장점이 있다.
 
-### 스트레스 테스트를 통한 성능 비교
+### 간단한 예제를 통한 성능 테스트
 
 **MVC**
 ```java
 @RestController
 @RequestMapping("/api/v2/mvcApi")
 public class MvcAPI {
+    private final MemberService memberService;
+
+    public MvcAPI(MemberService memberService) {
+        this.memberService = memberService;
+    }
+
     @GetMapping("/helloMvc")
     public Map<String, String> helloMvc() {
         return Map.of("status", "200");
+    }
+
+    @GetMapping("/mvcData")
+    public ResponseEntity<Response> testFlux(final String id) {
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(new MediaType(MediaType.APPLICATION_JSON, StandardCharsets.UTF_8));
+
+        Optional<Member> result = Optional.of(memberService.getUserById(id).orElse(new Member()));
+
+        Response response = Response.builder()
+                .status(StatusEnum.OK)
+                .message("success")
+                .data(result)
+                .build();
+
+        return new ResponseEntity<>(response, header, HttpStatus.OK);
     }
 }
 ```
@@ -43,9 +65,28 @@ public class MvcAPI {
 @RestController
 @RequestMapping("/api/v2/webFluxApi")
 public class WebFluxAPI {
+    private final MemberService memberService;
+
+    public WebFluxAPI(MemberService memberService) {
+        this.memberService = memberService;
+    }
+
     @GetMapping("/helloWebFlux")
     public Mono<Map<String, String>> helloWebFlux() {
-        return Mono.just(Map.of("status", "200"));
+        return Mono.just(Map.of("status", "OK"));
+    }
+
+    @GetMapping("/webFluxData")
+    public Mono<Response> webFluxData(final String id) {
+        Optional<Member> result = Optional.of(memberService.getUserById(id).orElse(new Member()));
+
+        Response response = Response.builder()
+                .status(StatusEnum.OK)
+                .message("success")
+                .data(result)
+                .build();
+
+        return Mono.just(response);
     }
 }
 ```
@@ -77,7 +118,28 @@ logging:
     root: INFO
 ```
 
-스레드 최소 설정 값은 1000으로 진행하였다.
+스레드 최소 설정 값은 1000으로 **apache jmeter**를 사용해서 동시 요청 테스트를 진행했다.
+
+![Desktop Preview](/assets/images/post/webflux/jmeter_test_case_1.png)
+
+**MVC**
+![Desktop Preview](/assets/images/post/webflux/jmeter_test_case_2.png)
+
+throughput(TPS) : 10352.0/sec  
+평균 응답시간 : 167 ~ 200ms
+
+**WebFlux**
+![Desktop Preview](/assets/images/post/webflux/jmeter_test_case_3.png)
+
+throughput(TPS) : 12372.2/sec  
+평균 응답시간 : 89 ~ 137ms
+
+간단한 예제 코드와 jmeter를 사용해서 성능 비교를 해봤는데
+
+Summary Report를 보면 WebFlux가 MVC보다 응답시간이 빠르면서 초당 처리한 트랜잭션양이 많은걸 알 수 있다.
+가벼운 조회 쿼리를 사용하였는데도 성능차이가 눈에 보일 정도이다.
+
+다음에 기회가 된다면 redis 캐시를 사용해서 테스트 결과를 도출해보도록 하겠다.
 
 ## 결론
 **MVC**와 **WebFlux**는 각기 다른 특징과 장점이 있다.
