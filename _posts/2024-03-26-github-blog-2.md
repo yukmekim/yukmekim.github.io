@@ -4,6 +4,7 @@ description: GitHub Pages는 Jekyll을 사용하여 정적 사이트를 구축�
 categories:
  - GitHub Blog
 tags:
+ - GitHub Blog
 ---
 
 지난 포스팅에서 블로그로 사용할 GitHub Repository를 만들어 GitHub Actions를 통해 자동 빌드 및 배포가 되는것까지 확인했다.

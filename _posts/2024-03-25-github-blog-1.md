@@ -4,6 +4,7 @@ description: 깃헙 블로그(GitHub blog)의 정식 명칭은 깃헙 페이지(
 categories:
  - GitHub Blog
 tags:
+ - GitHub Blog
 ---
 
 회고와 공부한 내용을 정리할 공간이 필요해서 노션 사용을 시작했지만 카테고리별로 나눠 정리를 해도 히스토리 관리가 힘들어 블로그에 정리하기로 결정했다.
