@@ -3,6 +3,7 @@ title: 'MVC와 WebFlux의 차이, 고속 주행을하는 WebFlux..?'
 description: 웹 애플리케이션을 만들다 보면, 어떤 프레임워크를 사용할지 고민하게 된다. 특히 Spring Framework의 두 가지 대표적인 옵션인 Spring MVC와 WebFlux는 서로 다른 접근 방식을 가지고 있는데, 오늘은 이 두 프레임워크의 차이점을 살펴보면서, WebFlux가 왜 "고속 주행"을 할 수 있는지 알아보려고 한다.
 categories:
  - Java
+ - Spring
 tags:
  - Java
 ---
