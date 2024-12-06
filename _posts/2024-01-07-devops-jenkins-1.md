@@ -21,7 +21,7 @@ tags:
 자, 배포시스템이 갖춰져 있지 않아 홧김에 CI/CD를 구축해보려 하니 사전 지식조차 없다.  
   
   
-![Desktop Preview](/assets/images/post/jenkins_1/mudo_1.jpg)  
+<!-- ![Desktop Preview](/assets/images/post/jenkins_1/mudo_1.jpg)   -->
   
   
 가장 기본이 되는 **[Jenkins 공식 문서](https://www.jenkins.io/doc)**와 **[젠킨스로 배우는 CI/CD 파이프라인 구축](https://product.kyobobook.co.kr/detail/S000212572110)** 도서를 참고하여 구축에 들어갔다.

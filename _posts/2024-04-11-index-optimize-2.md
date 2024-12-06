@@ -94,7 +94,7 @@ and personal_no in (101, 102, 103, 104, 105, 106);
 ![Desktop Preview](/assets/images/post/index_optimize_2/index_explain_2.png)
 
 만들어둔 IDX_SALARIES_DECREASE 인덱스 키를 사용한 것을 확인 할 수 있다.  
-첫번째와 두번째 실행 계획을 비교해보면 첫 번쨰 조건절에 사용된 컬럼이 생성했던 인덱스 컬럼의 순서와 관련이 있음을 확인할 수 있다.
+첫번째와 두번째 실행 계획을 비교해보면 첫 번째 조건절에 사용된 컬럼이 생성했던 인덱스 컬럼의 순서와 관련이 있음을 확인할 수 있다.
 
 세번째 실행 계획을 보면 
 ![Desktop Preview](/assets/images/post/index_optimize_2/index_explain_3.png)
