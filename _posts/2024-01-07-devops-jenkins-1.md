@@ -59,9 +59,54 @@ sudo yum install java-17-amazon-corretto // amazon java 17 설치
 java -version
 ```
 
-`java -version`명령어를 입력해서 java 버전 확인이 되면 설치 끝이다!  
+`java -version`명령어를 입력해서 java 버전 확인이 되면 자바 설치가 된것이다.  
 
 ![Desktop Preview](/assets/images/post/jenkins_1/jenkins_java_search.png)
+
+다음으로 jenkins를 설치할 차례다.
+Red Hat/Alma/Rocky 설치 매뉴얼을 따라서 진행하는데 `Long Term Support release`와 `Weekly release` 두 가지 배포 버전이 있다.
+
+아래 표가 jenkins 문서를 찾아서 두 가지 배포 버전을 보기 좋게 정리한 내용이다.
+
+| | Long Term Support release | Weekly release | 
+| --- | --- | --- |
+| 릴리스 주기 |	3개월마다 업데이트, 안정화 | 매주 새로운 버전 릴리스 |
+| 안정성 |	매우 안정적, 프로덕션 환경에 적합 | 기능이 실험적일 수 있어 불안정한 경우 있음 |
+| 보안 패치 및 버그 수정 |	1년 이상 지원, 보안 패치와 안정성 수정 제공 | 최신 기능이 빠르게 추가되지만, 안정성은 부족할 수 있음 |
+| 주요 사용 환경 |	프로덕션 환경, 안정성 중시 | 새로운 기능을 실험하거나 테스트하는 개발 환경 |
+| 새로운 기능 |	비교적 천천히 추가 | 최신 기능과 개선사항이 빠르게 추가 |
+
+새로운 버전을 배포 받는것보다 안정적인 작업을 위해 `Long Term Support release` 버전으로 문서에 나온 순서로 설치를 진행했다.
+
+``` linux
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+# Add required dependencies for the jenkins package
+sudo yum install fontconfig java-17-openjdk
+sudo yum install jenkins
+sudo systemctl daemon-reload
+```
+
+설치후 jenkins를 실행하는것까지 친절하게 문서에 나와있다.
+```linux
+sudo systemctl enable jenkins // 젠킨스 부팅시 시작 상태로 전환
+
+sudo systemctl start jenkins // 젠킨스 실행 명령어
+
+sudo systemctl status jenkins // 젠킨스 서비스 상태 확인
+```
+
+`sudo systemctl start jenkins` 명령어로 시작후 `sudo systemctl status jenkins` 다음 명령어로 확인했을때 
+아래와 같이 출력되면 현재 젠킨스가 실행중이라는 뜻이다.
+
+![Desktop Preview](/assets/images/post/jenkins_1/jenkins_status.png)
+
+자 이제 jenkins를 설치해서 실행까지 해줬으니 한번쯤은 봤을 젠킨스 화면을 보러가보자
+jenkins는 설치후 기본적으로 8080포트로 포워딩 된다.
+
+해당 포트로 퍼블릭DNS에 접근하기 위해서는 만들어둔 ec2 인스턴스 보안그룹에 8080포트가 열려있어야 한다.
+
 
 
 
