@@ -105,7 +105,25 @@ sudo systemctl status jenkins // 젠킨스 서비스 상태 확인
 자 이제 jenkins를 설치해서 실행까지 해줬으니 한번쯤은 봤을 젠킨스 화면을 보러가보자
 jenkins는 설치후 기본적으로 8080포트로 포워딩 된다.
 
-해당 포트로 퍼블릭DNS에 접근하기 위해서는 만들어둔 ec2 인스턴스 보안그룹에 8080포트가 열려있어야 한다.
+퍼블릭DNS에 해당 포트로 접속을 하면 초기에는 들어가지지 않는다.  
+ec2에 인스턴스를 추가하면 보안그룹이 생기는데 기본적으로 ssh 접근 포트인 22번 포트만 열려있는 상태이기 때문이다.  
+해당 포트로 퍼블릭DNS에 접근하기 위해서는 만들어둔 ec2 인스턴스 보안그룹에 8080포트가 열려있어야 하니 보안그룹 인바운드 규칙에 8080포트를 추가해주자.
+
+
+![Desktop Preview](/assets/images/post/jenkins_1/aws_tcp.png)
+
+포트를 추가하고 퍼블릭DNS에 8080포트로 접속을 하게되면 아래와 같은 화면을 볼 수 있다.
+
+![Desktop Preview](/assets/images/post/jenkins_1/jenkins_main_1.png)
+
+친절한 jenkins씨의 설명을 따라 jenkins 설치 경로에 `initialAdminPassword`을 찾아 붙여 넣어준다.  
+계속 해서 진행해보면 `Getting Started` 화면이 나타나는데 여기도 두가지 옵션이 있다.  
+  
+**Install suggested plugins** : jenkins에서 제안하는 추천 플러그인을 다운로드
+**Select plugins to install** : 직접 필요한 플러그인을 다운로드
+  
+처음 jenkins를 이용해보기에 `Install suggested plugins` 옵션을 선택하여 자동으로 추천되는 플러그인들을 설치후 프리티어 서버가 무거워지거나
+필요한 플러그인이 있을 경우 추가적으로 조치하는 방향으로 가겠다.
 
 
 
