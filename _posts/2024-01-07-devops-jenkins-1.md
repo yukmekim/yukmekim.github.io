@@ -119,16 +119,19 @@ ec2에 인스턴스를 추가하면 보안그룹이 생기는데 기본적으로
 친절한 jenkins씨의 설명을 따라 jenkins 설치 경로에 `initialAdminPassword`을 찾아 붙여 넣어준다.  
 계속 해서 진행해보면 `Getting Started` 화면이 나타나는데 여기도 두가지 옵션이 있다.  
   
-**Install suggested plugins** : jenkins에서 제안하는 추천 플러그인을 다운로드
-**Select plugins to install** : 직접 필요한 플러그인을 다운로드
+**Install suggested plugins** : jenkins에서 제안하는 추천 플러그인을 다운로드  
+**Select plugins to install** : 직접 필요한 플러그인을 다운로드  
   
 처음 jenkins를 이용해보기에 `Install suggested plugins` 옵션을 선택하여 자동으로 추천되는 플러그인들을 설치후 프리티어 서버가 무거워지거나
 필요한 플러그인이 있을 경우 추가적으로 조치하는 방향으로 가겠다.
 
+![Desktop Preview](/assets/images/post/jenkins_1/jenkins_main_2.png)
 
+플러그인 설치가 완료되면 jenkins에 접속할때 사용할 계정을 생성 또는 스킵할수있는데 간단한게 사용할 6anglebro 계정을 만들었다.
 
+![Desktop Preview](/assets/images/post/jenkins_1/jenkins_main_3.png)
 
+생성한 계정으로 jenkins에 로그인하면 익숙한 그 화면을 볼 수 있다.
+jeknins 설치만 끝났는데 벌써 구축 끝낸거 같은 기분
 
-
-
-
+이어서 두번째 포스팅에서부터 위에 구매한 책을보고 본격적으로 자동화 구축에 들어가도록 하겠다.
