@@ -123,7 +123,7 @@ ec2에 인스턴스를 추가하면 보안그룹이 생기는데 기본적으로
 **Select plugins to install** : 직접 필요한 플러그인을 다운로드  
   
 처음 jenkins를 이용해보기에 `Install suggested plugins` 옵션을 선택하여 자동으로 추천되는 플러그인들을 설치후 프리티어 서버가 무거워지거나
-필요한 플러그인이 있을 경우 추가적으로 조치하는 방향으로 가겠다.
+필요한 플러그인이 있을 경우 추가적으로 조치하는 방향으로 갈 예정이다.
 
 ![Desktop Preview](/assets/images/post/jenkins_1/jenkins_main_2.png)
 
