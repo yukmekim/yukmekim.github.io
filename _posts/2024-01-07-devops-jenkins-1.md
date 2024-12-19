@@ -18,17 +18,14 @@ tags:
 
 ## Jenkins
 ### Jenkins 설치
-자, 배포시스템이 갖춰져 있지 않아 홧김에 CI/CD를 구축해보려 하니 사전 지식조차 없다.  
-  
-  
 <!-- ![Desktop Preview](/assets/images/post/jenkins_1/mudo_1.jpg)   -->
   
-  
-가장 기본이 되는 **[Jenkins 공식 문서](https://www.jenkins.io/doc)**와 **[젠킨스로 배우는 CI/CD 파이프라인 구축](https://product.kyobobook.co.kr/detail/S000212572110)** 도서를 참고하여 구축에 들어갔다.
+배포시스템이 갖춰져 있지 않아 홧김에 CI/CD를 구축해보려 하니 사전 지식조차 없기에, 가장 기본이 되는 **[Jenkins 공식 문서](https://www.jenkins.io/doc)**와 **[젠킨스로 배우는 CI/CD 파이프라인 구축](https://product.kyobobook.co.kr/detail/S000212572110)** 도서를 참고하여 구축에 들어갔다.
 
-도서에서는 윈도우 환경에서 jenkins를 설치해서 진행하는 방법을 소개하고 있지만 팀장님께 건의드릴 aws ec2환경에서 해보는게 좋을거 같고, aws는 무려 **750시간이라는 프리티어 서비스**를 제공하는데 한 번 이용해보려 한다.
+도서에서는 윈도우 환경에서 jenkins를 설치해서 진행하는 방법을 소개하고 있어 젠킨스 내부 시스템에 대한 참고로 사용하고, 팀장님꼐 건의 드릴 ec2 서버를 이용해 보기로 했다. aws는 무려 **750시간이라는 프리티어 서비스**를 제공하는데 한 번 이용해보려 한다.
 
-![Desktop Preview](/assets/images/post/jenkins_1/jenkins_system_requirements.png)
+<!-- ![Desktop Preview](/assets/images/post/jenkins_1/jenkins_system_requirements.png) -->
+<img src="/assets/images/post/jenkins_1/jenkins_system_requirements.png" width="80%" height="80%"/>
 
 찾아보니 젠킨스 문서에서 권장하는 최소 사양은 **256MB RAM**에 **2GB의 저장공간**이 필요하다고 나와있다. (도커를 사용할 경우 10GB의 저장공간)  
 프리티어에서 ec2서버의 스펙은 1GB의 RAM 최대 20GB의 저장 공간을 제공해주는거 같다.  
@@ -45,7 +42,9 @@ jenkins는 java 기반의 CI/CD 툴이기 때문에 java설치는 필수이다.
 
 **[Jenkins 공식 문서]()**에 지원되는 자바 버전별로 정리되어있는데, 가장 최신 버전의 jenkins를 이용할 계획이기 때문에 java 17 버전을 다운로드 받도록 하겠다.
 
-![Desktop Preview](/assets/images/post/jenkins_1/jenkins_java_version.png)
+<!-- ![Desktop Preview](/assets/images/post/jenkins_1/jenkins_java_version.png) -->
+<img src="/assets/images/post/jenkins_1/jenkins_java_version.png" width="80%" height="80%"/>
+
 
 자바를 설치하기 위해서 **레드햇 계열의 리눅스 배포판에서 사용하는 프로그램(패키지) 설치 관리 도구 yum**을 이용해 설치를 진행했다.
 
@@ -66,7 +65,7 @@ java -version
 다음으로 jenkins를 설치할 차례다.
 Red Hat/Alma/Rocky 설치 매뉴얼을 따라서 진행하는데 `Long Term Support release`와 `Weekly release` 두 가지 배포 버전이 있다.
 
-아래 표가 jenkins 문서를 찾아서 두 가지 배포 버전을 보기 좋게 정리한 내용이다.
+아래 표가 jenkins 문서를 찾아서 두 가지 배포 버전을 정리한 내용이다.
 
 | | Long Term Support release | Weekly release | 
 | --- | --- | --- |
@@ -76,7 +75,7 @@ Red Hat/Alma/Rocky 설치 매뉴얼을 따라서 진행하는데 `Long Term Supp
 | 주요 사용 환경 |	프로덕션 환경, 안정성 중시 | 새로운 기능을 실험하거나 테스트하는 개발 환경 |
 | 새로운 기능 |	비교적 천천히 추가 | 최신 기능과 개선사항이 빠르게 추가 |
 
-새로운 버전을 배포 받는것보다 안정적인 작업을 위해 `Long Term Support release` 버전으로 문서에 나온 순서로 설치를 진행했다.
+매주 새로운 버전을 배포 받는것보다 안정적인 작업을 위해 `Long Term Support release` 버전으로 문서를 따라 설치를 진행했다.
 
 ``` linux
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
@@ -100,7 +99,7 @@ sudo systemctl status jenkins // 젠킨스 서비스 상태 확인
 `sudo systemctl start jenkins` 명령어로 시작후 `sudo systemctl status jenkins` 다음 명령어로 확인했을때 
 아래와 같이 출력되면 현재 젠킨스가 실행중이라는 뜻이다.
 
-![Desktop Preview](/assets/images/post/jenkins_1/jenkins_status.png)
+<img src="/assets/images/post/jenkins_1/jenkins_status.png" width="60%" height="20%"/>
 
 자 이제 jenkins를 설치해서 실행까지 해줬으니 한번쯤은 봤을 젠킨스 화면을 보러가보자
 jenkins는 설치후 기본적으로 8080포트로 포워딩 된다.
@@ -110,11 +109,11 @@ ec2에 인스턴스를 추가하면 보안그룹이 생기는데 기본적으로
 해당 포트로 퍼블릭DNS에 접근하기 위해서는 만들어둔 ec2 인스턴스 보안그룹에 8080포트가 열려있어야 하니 보안그룹 인바운드 규칙에 8080포트를 추가해주자.
 
 
-![Desktop Preview](/assets/images/post/jenkins_1/aws_tcp.png)
+<img src="/assets/images/post/jenkins_1/aws_tcp.png" width="80%" height="30%"/>
 
 포트를 추가하고 퍼블릭DNS에 8080포트로 접속을 하게되면 아래와 같은 화면을 볼 수 있다.
 
-![Desktop Preview](/assets/images/post/jenkins_1/jenkins_main_1.png)
+<img src="/assets/images/post/jenkins_1/jenkins_main_1.png" width="80%" height="80%"/>
 
 친절한 jenkins씨의 설명을 따라 jenkins 설치 경로에 `initialAdminPassword`을 찾아 붙여 넣어준다.  
 계속 해서 진행해보면 `Getting Started` 화면이 나타나는데 여기도 두가지 옵션이 있다.  
@@ -125,13 +124,13 @@ ec2에 인스턴스를 추가하면 보안그룹이 생기는데 기본적으로
 처음 jenkins를 이용해보기에 `Install suggested plugins` 옵션을 선택하여 자동으로 추천되는 플러그인들을 설치후 프리티어 서버가 무거워지거나
 필요한 플러그인이 있을 경우 추가적으로 조치하는 방향으로 갈 예정이다.
 
-![Desktop Preview](/assets/images/post/jenkins_1/jenkins_main_2.png)
+<img src="/assets/images/post/jenkins_1/jenkins_main_2.png" width="80%" height="80%"/>
 
 플러그인 설치가 완료되면 jenkins에 접속할때 사용할 계정을 생성 또는 스킵할수있는데 간단한게 사용할 6anglebro 계정을 만들었다.
 
-![Desktop Preview](/assets/images/post/jenkins_1/jenkins_main_3.png)
+<img src="/assets/images/post/jenkins_1/jenkins_main_3.png" width="80%" height="80%"/>
 
 생성한 계정으로 jenkins에 로그인하면 익숙한 그 화면을 볼 수 있다.
 jeknins 설치만 끝났는데 벌써 구축 끝낸거 같은 기분
 
-이어서 두번째 포스팅에서부터 위에 구매한 책을보고 본격적으로 자동화 구축에 들어가도록 하겠다.
+이어서 두번째 포스팅에서부터 위에 구매한 책을보고 파이프 라인을 작성하여 본격적으로 자동화 구축에 들어가도록 하겠다.
