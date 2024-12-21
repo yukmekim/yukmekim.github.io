@@ -9,7 +9,7 @@ tags:
 ---
 
 aws ec2에 젠킨스 서버를 구축하고 사용자 등록까지 진행했다.  
-젠킨스 서버에 올려놓고 github 저장조만 연동해서 자동화를 시킬수 있으면 좋겠지만, github 저장소 연동 부터 소스 패키징에 릴리스까지 전부 구축해야한다.  
+젠킨스 서버에 올려놓고 github 저장조만 연동해서 자동화를 시킬수 있으면 좋겠지만, github 저장소 연동 부터 소스 패키징에 릴리즈까지 전부 구축해야한다.  
   
 젠킨스 파이프라인을 통해 github 저장소의 소스 코드를 받고 **['Pipeline Maven integration'](https://plugins.jenkins.io/pipeline-maven/)**을 이용해서 maven clean후 패키징을 진행후 패키징된 파일을 확인하는 순서로 진행해보도록 하겠다.
 
@@ -17,10 +17,6 @@ aws ec2에 젠킨스 서버를 구축하고 사용자 등록까지 진행했다.
 파이프라인에서 github 비공개 저장소에 접근하기 위해서는 jenkins에 credential을 추가 해줘야한다.  
 ![Desktop Preview](/assets/images/post/jenkins_2/jenkins_credentials_1.png)
 ![Desktop Preview](/assets/images/post/jenkins_2/jenkins_credentials_2.png)
-
-프리티어에서 테스트를 진행할수 없는 상태가 되어버렸다 node agent를 통해서 파이프라인을 실행시켜야하는데 메모리 부족으로인해 node가 오프라인 상태로 유지가 되어버렸다.
-
-ec2 서버의 메모리를 올려서 계속해서 진행 또는 맥북에 젠킨스를 설치하고 ec2 서버에 소스를 배포하는 방향으로 진행하겠다.
 
 ## 파이프라인 코드 작성
 ### Github 저장소 소스 clone
@@ -74,3 +70,8 @@ stage ('Build') {
 ```
 
 이전에 빌드한 아티펙트를 clean하고 환경변수에 정의한 pom 파일을 통해 패키징하는 과정이다.
+
+작성한 파이프라인을 실행 시켜 봤다는데,프리티어에서 테스트를 진행할수 없는 상태가 되어버렸다.  
+node agent를 통해서 파이프라인을 실행시켜야하는데 메모리 부족으로인해 node가 오프라인 상태로 유지가 되어버렸다.
+
+ec2 서버의 메모리를 올려서 계속해서 진행 또는 맥북에 젠킨스를 설치하고 ec2 서버에 소스를 배포하는 방향으로 진행하겠다.
