@@ -15,8 +15,8 @@ aws ec2에 젠킨스 서버를 구축하고 사용자 등록까지 진행했다.
 
 ## Github 계정 연동
 파이프라인에서 github 비공개 저장소에 접근하기 위해서는 jenkins에 credential을 추가 해줘야한다.  
-![Desktop Preview](/assets/images/post/jenkins_2/jenkins_credentials_1.png)
-![Desktop Preview](/assets/images/post/jenkins_2/jenkins_credentials_2.png)
+<img src="/assets/images/post/jenkins_2/jenkins_credentials_1.png" width="80%" height="80%"/>
+<img src="/assets/images/post/jenkins_2/jenkins_credentials_2.png" width="80%" height="80%"/>
 
 ## 파이프라인 코드 작성
 ### Github 저장소 소스 clone
@@ -55,7 +55,7 @@ pipeline {
 해당 파이프라인을 실행했을때 `/var/lib/jenkins/workspace/젠킨스 프로젝트 명/` 디렉토리에 패키징되지 않은 소스를 받을 수 있었다.  
 이후 프로젝트를 배포 파일로 패키징 하기 위해서 `Pipeline Maven integration` 플러그인을 사용할 예정이다.
 
-![Desktop Preview](/assets/images/post/jenkins_2/jenkins_plugins.png)
+<img src="/assets/images/post/jenkins_2/jenkins_plugins.png" width="80%" height="80%"/>
 
 플러그인을 설치후 `stage`에 [젠킨스 문서에 Pipeline Maven integration](https://plugins.jenkins.io/pipeline-maven/)을 참고하여 Build 단계를 추가했다.  
 
@@ -71,7 +71,7 @@ stage ('Build') {
 
 이전에 빌드한 아티펙트를 clean하고 환경변수에 정의한 pom 파일을 통해 패키징하는 과정이다.
 
-작성한 파이프라인을 실행 시켜 봤다는데,프리티어에서 테스트를 진행할수 없는 상태가 되어버렸다.  
-node agent를 통해서 파이프라인을 실행시켜야하는데 메모리 부족으로인해 node가 오프라인 상태로 유지가 되어버렸다.
+작성한 파이프라인을 실행 시켜 봤다는데,프리티어에서 계속해서 테스트를 진행할수 없게 되었다.  
+node agent를 통해서 파이프라인을 실행시켜야하는데 메모리 부족으로인해 node가 오프라인 상태로 유지가 되어 파이프라인이 작동하지 않는 상태이다.
 
 ec2 서버의 메모리를 올려서 계속해서 진행 또는 맥북에 젠킨스를 설치하고 ec2 서버에 소스를 배포하는 방향으로 진행하겠다.
