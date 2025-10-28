@@ -51,13 +51,11 @@ Redis는 모든 데이터를 메모리(RAM)에 저장하여 디스크 I/O가 발
 ```
 접근 속도 비교:
 메모리(RAM):  50-100ns
-SSD:         50-150μs (메모리보다 약 1,000배 느림)
-HDD:         5-15ms   (메모리보다 약 100,000배 느림)
+SSD:          50-150μs (메모리보다 약 1,000배 느림)
+HDD:          5-15ms   (메모리보다 약 100,000배 느림)
 ```
 
-**실제 토큰 조회 시간 비교**
+![Desktop Preview](/assets/images/post/redis_migration/redis-test-result.png)
 
-[여기에 실제 측정 결과 이미지나 표]
-
-- RDBMS: 평균 45ms (쿼리 파싱 + 인덱스 탐색 + 디스크 I/O)
-- Redis: 평균 2ms (Hash Table 직접 접근)
+- PostgreSQL: 평균 9.13ms (913ms ÷ 100 threads)
+- Redis: 평균 2.30ms (230ms ÷ 100 threads)
