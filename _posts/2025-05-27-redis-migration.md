@@ -59,3 +59,57 @@ HDD:          5-15ms   (메모리보다 약 100,000배 느림)
 
 - PostgreSQL: 평균 9.13ms (913ms ÷ 100 threads)
 - Redis: 평균 2.30ms (230ms ÷ 100 threads)
+
+## Redis 적용 후 달라진 점
+
+### 1. 코드가 단순해졌다
+
+**Before: RDBMS**
+```java
+@Entity
+public class RefreshTokenEntity { ... }
+
+@Repository
+public interface RefreshTokenRepository { ... }
+
+@Scheduled(cron = "0 0 2 * * *")  // 배치 스케줄러
+public void deleteExpiredTokens() { ... }
+```
+
+**After: Redis**
+```java
+redisTemplate.opsForValue().set(key, value);
+redisTemplate.expire(key, 7, TimeUnit.DAYS); // TTL로 자동 만료
+```
+
+엔티티, Repository, 배치 스케줄러가 모두 사라졌다.
+단순한 Key-Value 구조로 충분했다.
+
+### 2. 성능이 개선되었다
+
+부하 테스트 결과 **4배** 빠른 응답 속도를 확인했다.
+
+| | PostgreSQL | Redis | 개선 |
+|---|---|---|---|
+| 응답 시간 | 9.13ms | 2.30ms | 4배 |
+| 처리량 | 10,953 req/sec | 43,478 req/sec | 4배 |
+
+더 인상적이었던 건, **트래픽이 증가할수록 차이가 커진다**는 점이다.
+
+순차 처리에서는 1.9배였던 차이가,
+동시 100명 접속 시에는 4배로 벌어졌다.
+
+PostgreSQL은 Connection Pool 경합과 Lock으로 인해
+동시 접속이 많아질수록 성능이 급격히 저하되었다.
+
+반면 Redis는 높은 처리량(초당 43,000건)으로
+안정적인 성능을 유지했다.
+
+### 3. DB 부하가 줄었다
+
+매 API 요청마다 발생하던 토큰 검증 쿼리가 사라졌다.
+```
+초당 1만 건의 API 요청이 있다면:
+- Before: 초당 1만 번의 DB 쿼리
+- After: DB 쿼리 0번 (Redis로 분리)
+```
