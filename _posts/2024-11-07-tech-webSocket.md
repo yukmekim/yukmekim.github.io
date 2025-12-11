@@ -6,7 +6,7 @@ categories:
  - Backend
 tags:
  - Java
- - Spring
+ - Spring WebFlux
 ---
 
 ## 개요

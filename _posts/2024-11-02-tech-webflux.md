@@ -6,7 +6,7 @@ categories:
  - Backend
 tags:
  - Java
- - Spring
+ - Spring WebFlux
 ---
 **MVC**와 **WebFlux**를 비교하기 전 두 옵션이 가진 특징을 이해하기 위해 **동기**와 **비동기**에 대해 간단하게 정리를 하고 넘어가겠다.
 
