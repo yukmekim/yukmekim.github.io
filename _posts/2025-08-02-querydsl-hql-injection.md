@@ -16,7 +16,7 @@ tags:
 
 경고 내용으로는 Querydsl이 orderBy에서의 HQL injection에 취약하다는 내용이다.
 
-내용을 자세히 찾아보니 2024년11월9일 CSIRT.SK에서 QueryDSL 5.1.0에서 HQL Injection 취약점(CVE-2024-49203)을 보고하면서 등록된 경고이다.
+내용을 자세히 찾아보니 2024년11월9일 CSIRT.SK에서 QueryDSL 5.1.0에서 HQL Injection 취약점([CVE-2024-49203](https://product.kyobobook.co.kr/detail/S000212572110))을 보고하면서 등록된 경고이다.
 
 **핵심: Order By Injection**
 정렬 파라미터에 악의적인 값을 넣으면 임의의 HQL 구문을 실행할 수 있다는 것.
