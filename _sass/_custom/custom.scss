@@ -17,4 +17,8 @@
 }
 
 // 사이드바 RSS 버튼 숨김 (atom.xml 피드와 head의 자동 감지 링크는 유지)
-.feed-link { display: none; }
+// 사이드바 등장 애니메이션(motion.js)이 .motion-element에 인라인 display를 넣으므로 !important 필요
+.feed-link { display: none !important; }
+
+// 사이드바 소셜 링크 앞의 장식 점 제거
+.links-of-author a:before { display: none; }
