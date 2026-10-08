@@ -22,3 +22,14 @@
 
 // 사이드바 소셜 링크 앞의 장식 점 제거
 .links-of-author a:before { display: none; }
+
+// 테마 기본값은 오른쪽 여백만 10px이라 가운데 정렬에서 왼쪽으로 치우친다. 좌우를 같게 맞춘다
+.links-of-author a { margin: 0 5px 10px; }
+
+// 사이드바 통계(포스트·카테고리·태그) 칸 너비를 같게 맞춘다.
+// 글자 길이대로 너비가 정해지면 가운데 칸(카테고리)이 사이드바 중심에서 오른쪽으로 밀린다
+.site-state-item {
+  width: 90px;
+  padding: 0;
+  box-sizing: border-box;
+}
