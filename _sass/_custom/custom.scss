@@ -1,1 +1,17 @@
 // Custom styles.
+
+// 헤더 블로그명: 검은 박스 없이 텍스트만 표시
+.brand {
+  padding: 0;
+  color: $black-deep;
+  background: none;
+  &:hover { color: $black-deep; }
+}
+
+.site-title {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+
+  @include mobile() { font-size: 18px; }
+}
