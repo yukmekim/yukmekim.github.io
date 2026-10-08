@@ -6,7 +6,7 @@
 # Site
 title: 목표는 설명을 잘하는 개발자
 subtitle:
-description: 백엔드 개발자<br>중요한건 꺾이지 않는 마음ヽ(･̑ᴗ･̑)ﾉ
+description: 백엔드 개발자<br>중요한건 꺾이지 않는 마음ヽ(・∀・)ノ
 author: yukmekim
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: ko
@@ -213,8 +213,8 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
-  #LinkLabel: Link
+social:
+  GitHub: https://github.com/yukmekim
 
 
 # Social Links Icons
