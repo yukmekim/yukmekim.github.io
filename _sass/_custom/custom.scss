@@ -33,3 +33,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+// 사이드바 프로필 이미지를 원형으로 표시한다.
+// 원본(265x216)이 정사각형이 아니라 contain으로 그림 전체를 원 안에 넣고, 남는 영역은 흰 배경으로 채운다
+.site-author-image {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #fff;
+}
